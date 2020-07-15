@@ -29,7 +29,6 @@ fn string_slice() {
 
 fn main() {
     ptr_borrowing();
-    println!("undafe ptr");
     let modified_slice = array_slice();
     println!("modified array {:?}", modified_slice);
     string_slice();
