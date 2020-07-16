@@ -1,8 +1,8 @@
-fn is_prime(unit: u8) -> bool {
-    if unit < 2 {
+fn is_prime(unit: &u8) -> bool {
+    if unit < &2 {
         return false;
     }
-    let unit_sqrt = (unit as f32).sqrt() as u8;
+    let unit_sqrt = (*unit as f32).sqrt() as u8;
     for i in 2..(unit_sqrt+1) {
         if unit % i == 0 {
             return false;
@@ -12,8 +12,9 @@ fn is_prime(unit: u8) -> bool {
 }
 
 fn make_zero_if_prime(unit: &mut u8) {
-    if is_prime(*unit) {
-        *unit = 0;
+    let tmp: u8 = 0; 
+    if is_prime(unit) {
+        *unit = tmp;
     }
 }
 

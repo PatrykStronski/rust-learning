@@ -21,13 +21,20 @@ fn exchange_chromosomes(chr_1: &mut [u8;10], chr_2: &mut [u8;10]) {
    }
 }
 
+fn read_chromosomes(mut chr1: [u8;10], mut chr2: [u8;10]) {
+    chr1[0] = 14;
+    chr2[0] = 14;
+    println!("{:?}, {:?}", chr1, chr2);
+}
+
 fn main() {
     let mut chromosome_1: [u8; 10] = [10,15,88,0,12,9,8,3,5,78];
     let mut chromosome_2: [u8; 10] = [0,111,17,13,14,16,0,9,7,33];
     println!("First chromosome: {:?}", chromosome_1);
     println!("Second chromosome: {:?}", chromosome_2);
-    exchange_chromosomes(&mut chromosome_1, &mut chromosome_2);
+    exchange_chromosomes(chromosome_1, chromosome_2);
     println!("After crossover");
+    read_chromosomes(chromosome_1, chromosome_2);
     println!("First chromosome: {:?}", chromosome_1);
     println!("Second chromosome: {:?}", chromosome_2);
 }

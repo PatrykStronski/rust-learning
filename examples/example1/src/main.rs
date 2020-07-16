@@ -1,10 +1,10 @@
 fn ptr_borrowing() {
-    let mut integer = 10u8;
+    let integer = 10u8;
     println!("{} and this is a reference {}", integer, &integer);
     let mut integer2 = 22u8;
     let mut integer_ptr: &u8 = &integer2;
     println!("integer_ptr is {}", integer_ptr);
-    //integer2 = 128; //can be done only in unsafe mode with raw pointers prefixed with *
+    integer_ptr = &128; //can be done only in unsafe mode with raw pointers prefixed with *
     println!("integer_ptr is {}", integer_ptr);
 }
 
