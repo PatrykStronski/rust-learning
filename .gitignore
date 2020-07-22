@@ -1,1 +1,2 @@
-./examples/**/target/*
+examples/**/target
+Tasks/**/target
