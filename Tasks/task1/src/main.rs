@@ -18,7 +18,7 @@ fn main() {
     let mut chars: Vec<&char> = letters_counter.keys().collect();
     chars.sort();
 
-    for char in chars {
+    for char in chars { // here don't recommend using keyword as name of variable
         println!("{} occurs {} times", char, letters_counter.get(char).unwrap());
     }
 }
