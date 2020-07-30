@@ -81,17 +81,17 @@ impl ProductSet {
 }
 
 fn main() {
-    let mut radio = Product {
+    let radio = Product {
         name: String::from("radio"),
         cat: String::from("electronics"),
         price: 45.50
     };
-    let mut computer = Product {
+    let computer = Product {
         name: String::from("computer"),
         cat: String::from("electronics"),
         price: 1200.0
     };
-    let mut recorder = Product {
+    let recorder = Product {
         name: String::from("voice recorder"),
         cat: String::from("electronics"),
         price: 100.0
@@ -102,5 +102,7 @@ fn main() {
     };
     ps.print_products();
     ps.reassign_category(String::from("home facilities"));
+    ps.print_products();
+    println!("{}", radio.get_price_with_discount(0.10));
     ps.print_products();
 }
