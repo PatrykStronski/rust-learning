@@ -27,13 +27,13 @@ impl Naming for Product {
     }
 
     fn reassign_category(&mut self, cat: String) {
-        self.cat = cat;
+        self.cat = cat.to_string();
     }
 }
 
 impl Debug for Product {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result {
-        f.debug_struct("Product")
+        f.debug_struct("ProductSet")
         .field("name", &self.name)
         .field("category", &self.cat)
         .field("price", &self.price)
@@ -63,12 +63,16 @@ impl Naming for ProductSet {
 }
 
 impl Product {
-    pub fn get_price(&self) -> f32 {
+    fn get_price(&self) -> f32 {
         return self.price;
     }
 
-    pub fn get_price_with_discount(&self, disc: f32) -> f32 {
+    fn get_price_with_discount(&self, disc: f32) -> f32 {
         return self.price - self.price * disc;
+    }
+    
+    fn new_product(name: &str, category: &str, price: f32) -> Product {
+        return Product{ name: name.to_string(), cat: category.to_string(), price: price };
     }
 }
 
@@ -96,6 +100,7 @@ fn main() {
         cat: String::from("electronics"),
         price: 100.0
     };
+    println!("{}", radio.get_price_with_discount(0.1));
     let mut ps = ProductSet {
         name: String::from("electronics in the shop"),
         products: vec![radio, computer, recorder]
@@ -103,6 +108,5 @@ fn main() {
     ps.print_products();
     ps.reassign_category(String::from("home facilities"));
     ps.print_products();
-    println!("{}", radio.get_price_with_discount(0.10));
-    ps.print_products();
+    println!("{:?}", Product::new_product("telephone", "electronics", 2400.0));
 }
