@@ -1,3 +1,4 @@
+#[derive(Clone,Copy)]
 struct Point {
     x: f32,
     y: f32,
@@ -19,6 +20,16 @@ impl Point {
 struct Triangle {
     points: [Point; 3]
 }
+
+impl Copy for Triangle {}
+impl Clone for Triangle {
+    fn clone(&self) -> Triangle {
+        Triangle {
+            points: [ self.points[0], self.points[1], self.points[2]]
+        }
+    }
+}
+
 
 impl Triangle {
     fn get_area(&self) -> f32 {
@@ -45,8 +56,10 @@ fn main() {
     };
 
     let triangle = Triangle {
-        points: [Point { x: 11., y: 12. }, Point { x: 20., y: 20. }, Point { x: 30., y: 10. }]
+        points: [point1, point2, Point { x: 30., y: 10. }]
     };
+
+    let mut triangle2 = triangle;
 
     let midpoint = point1.midpoint_with(&point2);
 
@@ -54,5 +67,6 @@ fn main() {
     println!("Distance from method {}", point1.distance_to(&point2));
     println!("Midpoint from method [{}, {}]", midpoint.x, midpoint.y);
     println!("Triangle area is {}", triangle.get_area());
+    println!("Triangle2 area is {}", triangle2.get_area());
 }
 
