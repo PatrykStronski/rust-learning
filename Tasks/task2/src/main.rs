@@ -1,4 +1,4 @@
-#[derive(Clone,Copy)]
+#[derive(Clone,Copy,Debug)]
 struct Point {
     x: f32,
     y: f32,
@@ -17,6 +17,7 @@ impl Point {
     }
 }
 
+#[derive(Debug)]
 struct Triangle {
     points: [Point; 3]
 }
@@ -68,5 +69,6 @@ fn main() {
     println!("Midpoint from method [{}, {}]", midpoint.x, midpoint.y);
     println!("Triangle area is {}", triangle.get_area());
     println!("Triangle2 area is {}", triangle2.get_area());
+    println!("{:?}", triangle2);
 }
 

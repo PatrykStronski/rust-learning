@@ -1,7 +1,26 @@
-use rand::Rng;
+mod randoms;
+mod jsons;
+
+struct S {
+    name: String,
+    price: u8
+}
+
+macro_rules! multiply {
+ ($x: expr) => { $x };
+ ($x: expr, $y: expr) => ($x * $y);
+}
 
 fn main() {
-    let mut rng = rand::thread_rng();
-    let val: f32 = (rng.gen_range(0,1000) as f32) / 20.0;
+    let val = randoms::random_generations::generate_random();
     println!("{}", val);
+    println!("{}", multiply!(3));
+    println!("{}", multiply!(3,4));
+    println!("{}", multiply!(3.0,4.5));
+    let structure = S {
+        name: String::from("abc"),
+        price: 123
+    };
+    //println!("{}", structure);
+    jsons::create();
 }

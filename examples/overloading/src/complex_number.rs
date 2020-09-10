@@ -7,10 +7,10 @@ pub struct ComplexNumber {
     pub im: i16,
 }
 
-impl ops::Add<ComplexNumber> for ComplexNumber {
+impl ops::Add for ComplexNumber {
     type Output = ComplexNumber;
-    fn add(self, number2: ComplexNumber) -> ComplexNumber {
-        ComplexNumber { re: self.re + number2.re, im: self.im + number2.im }
+    fn add(self, number2: Self::Output) -> Self::Output {
+        Self { re: self.re + number2.re, im: self.im + number2.im }
     }
 }
 
