@@ -18,11 +18,14 @@ impl Point {
 }
 
 #[derive(Debug)]
-struct Triangle {
-    points: [Point; 3]
+impl Copy for Point {}
+
+impl Clone for Point {
+    fn clone(&self) -> Point {
+        Point { x: self.x, y: self.y }
+    }
 }
 
-impl Copy for Triangle {}
 impl Clone for Triangle {
     fn clone(&self) -> Triangle {
         Triangle {
